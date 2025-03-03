@@ -1,0 +1,50 @@
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\nisha\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: A6:C5:35:D0:DC:76:52:C5:EF:1C:AA:C5:E1:7C:23:4B
+SHA1: 24:DA:3D:EB:29:96:A9:6B:23:F1:C4:B2:C4:FA:70:2B:4A:9D:6D:A0
+SHA-256: BD:EA:73:EE:8F:B4:A2:1A:7A:5E:43:08:78:71:BF:DA:F7:C7:7D:31:20:D7:11:FD:19:02:CC:0C:A8:3E:26:7E
+Valid until: Monday, January 27, 2053
+----------
+Variant: release
+Config: debug
+Store: C:\Users\nisha\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: A6:C5:35:D0:DC:76:52:C5:EF:1C:AA:C5:E1:7C:23:4B
+SHA1: 24:DA:3D:EB:29:96:A9:6B:23:F1:C4:B2:C4:FA:70:2B:4A:9D:6D:A0
+SHA-256: BD:EA:73:EE:8F:B4:A2:1A:7A:5E:43:08:78:71:BF:DA:F7:C7:7D:31:20:D7:11:FD:19:02:CC:0C:A8:3E:26:7E
+Valid until: Monday, January 27, 2053
+----------
+Variant: profile
+Config: debug
+Store: C:\Users\nisha\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: A6:C5:35:D0:DC:76:52:C5:EF:1C:AA:C5:E1:7C:23:4B
+SHA1: 24:DA:3D:EB:29:96:A9:6B:23:F1:C4:B2:C4:FA:70:2B:4A:9D:6D:A0
+SHA-256: BD:EA:73:EE:8F:B4:A2:1A:7A:5E:43:08:78:71:BF:DA:F7:C7:7D:31:20:D7:11:FD:19:02:CC:0C:A8:3E:26:7E
+Valid until: Monday, January 27, 2053
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\nisha\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: A6:C5:35:D0:DC:76:52:C5:EF:1C:AA:C5:E1:7C:23:4B
+SHA1: 24:DA:3D:EB:29:96:A9:6B:23:F1:C4:B2:C4:FA:70:2B:4A:9D:6D:A0
+SHA-256: BD:EA:73:EE:8F:B4:A2:1A:7A:5E:43:08:78:71:BF:DA:F7:C7:7D:31:20:D7:11:FD:19:02:CC:0C:A8:3E:26:7E
+Valid until: Monday, January 27, 2053
+----------
+
+> Task :firebase_core:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\nisha\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: A6:C5:35:D0:DC:76:52:C5:EF:1C:AA:C5:E1:7C:23:4B
+SHA1: 24:DA:3D:EB:29:96:A9:6B:23:F1:C4:B2:C4:FA:70:2B:4A:9D:6D:A0
+SHA-256: BD:EA:73:EE:8F:B4:A2:1A:7A:5E:43:08:78:71:BF:DA:F7:C7:7D:31:20:D7:11:FD:19:02:CC:0C:A8:3E:26:7E
+Valid until: Monday, January 27, 2053
+----------
+
+BUILD SUCCESSFUL in 24s
