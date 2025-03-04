@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'home_screens.dart';
+import '../widgets/todos_widget.dart';
 
 class AllTodosScreen extends StatefulWidget {
   const AllTodosScreen({super.key});
@@ -38,31 +38,3 @@ class _AllTodosScreenState extends State<AllTodosScreen> {
     );
   }
 }
-// class AllTodosScreen extends StatelessWidget {
-//   const AllTodosScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Consumer<TodoProvider>(
-//       builder: (context, todoProvider, child) {
-//         if (todoProvider.isLoading) {
-//           return Center(child: CircularProgressIndicator());
-//         }
-
-//         if (todoProvider.todos.isEmpty) {
-//           return Center(child: Text('No tasks available.'));
-//         }
-//         return ListView.builder(
-//           itemCount: 10, // The length of the list
-//           itemBuilder: (context, index) {
-//             final todo = todoProvider.todos[index];
-//             return TodoWidget(
-//               title: todo.title,
-//               description: todo.completed ? 'Completed' : 'Not Completed',
-//             );
-//           },
-//         );
-//       },
-//     );
-//   }
-// }
