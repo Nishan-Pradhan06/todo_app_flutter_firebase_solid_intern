@@ -1,6 +1,6 @@
-import '../../domain/repository/todo_repository.dart';
-import '../services/todo_services.dart';
-import '../services/todo_services_impl.dart';
+import 'todo_repository.dart';
+import 'todo_services.dart';
+import 'todo_services_impl.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
   late TodoServices _todoServices;

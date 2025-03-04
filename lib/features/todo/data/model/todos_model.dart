@@ -1,8 +1,10 @@
 class TodosModel {
+  final String? id;
   final String title;
   final String description;
 
   TodosModel({
+     this.id,
     required this.title,
     required this.description,
   });
@@ -15,9 +17,10 @@ class TodosModel {
     };
   }
 
-  // Create a TaskModel from a Map (from Firestore)
-  factory TodosModel.fromJson(Map<String, dynamic> json) {
+    // Create a TaskModel from a Map (from Firestore)
+  factory TodosModel.fromJson(String id, Map<String, dynamic> json) {
     return TodosModel(
+      id: id,
       title: json["title"] ?? "",
       description: json["description"] ?? "",
     );

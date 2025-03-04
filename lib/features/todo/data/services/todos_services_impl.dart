@@ -14,4 +14,16 @@ class TodosServicesImpl implements TodosServices {
   Future<void> addTask(TodosModel todos) async {
     await _firestore.collection("todos").add(todos.toJson());
   }
+
+  @override
+  Stream<List<TodosModel>> fetchTodos() {
+    return _firestore.collection("todos").snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
+        return TodosModel.fromJson(
+          doc.id,
+          doc.data(),
+        );
+      }).toList();
+    });
+  }
 }

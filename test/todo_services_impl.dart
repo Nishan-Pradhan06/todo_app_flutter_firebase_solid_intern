@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import '../../../../core/constant/api.dart';
-import '/features/todo/data/services/todo_services.dart';
-import '../model/get_list_model.dart';
+import 'package:todo/core/constant/api.dart';
+import 'todo_services.dart';
+import 'get_list_model.dart';
 
 class TodoServicesImpl implements TodoServices {
   final Dio _dio = Dio();

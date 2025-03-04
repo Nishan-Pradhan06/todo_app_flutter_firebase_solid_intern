@@ -1,7 +1,6 @@
+import '../../data/model/todos_model.dart';
 
-import '../model/todos_model.dart';
-
-abstract class TodosServices {
+abstract class TodosRepository {
   Future<void> addTask(TodosModel todos);
 
   Stream<List<TodosModel>> fetchTodos();

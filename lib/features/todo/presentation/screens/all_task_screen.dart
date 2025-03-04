@@ -1,35 +1,60 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/features/todo/data/model/todos_model.dart';
+import 'package:todo/features/todo/presentation/provider/todos_provider.dart';
+import 'package:todo/features/todo/presentation/screens/edit_todos_screen.dart';
 import '../widgets/todos_widget.dart';
 
-class AllTodosScreen extends StatefulWidget {
+class AllTodosScreen extends StatelessWidget {
   const AllTodosScreen({super.key});
 
   @override
-  State<AllTodosScreen> createState() => _AllTodosScreenState();
-}
-
-class _AllTodosScreenState extends State<AllTodosScreen> {
-  final Stream<QuerySnapshot> _stream =
-      FirebaseFirestore.instance.collection("todos").snapshots();
-  @override
   Widget build(BuildContext context) {
+    final todosProvider = Provider.of<TodosProvider>(context, listen: false);
+
+    // Fetch todos when the screen loads
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => todosProvider.fetchTodos());
+
     return Scaffold(
-      body: StreamBuilder(
-        stream: _stream,
+      body: StreamBuilder<List<TodosModel>>(
+        stream: todosProvider.todosStream,
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator.adaptive());
+          // Handle loading state
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
           }
+
+          // Handle errors
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
+
+          // Check if data is available
+          final todos = snapshot.data;
+          if (todos == null || todos.isEmpty) {
+            return const Center(child: Text('No tasks available.'));
+          }
+
+          // Display the list of todos
           return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
+            itemCount: todos.length,
             itemBuilder: (context, index) {
-              Map<String, dynamic> todosDocs =
-                  snapshot.data!.docs[index].data() as Map<String, dynamic>;
-              return TodosWidget(
-                title: todosDocs["title"],
-                description: todosDocs["description"],
-                time: '10PM',
+              final todo = todos[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => EditTodosScreen(),
+                    ),
+                  );
+                },
+                child: TodosWidget(
+                  title: todo.title,
+                  description: todo.description,
+                  time: '10PM', // Replace with actual time logic if needed
+                ),
               );
             },
           );

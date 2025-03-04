@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'features/auth/presentation/screens/login_screen.dart';
 import 'features/todo/data/repository/todos_repository_impl.dart';
-import 'features/todo/presentation/provider/todo_provider.dart';
 import 'features/todo/presentation/provider/todos_provider.dart';
 
 void main() async {
@@ -21,7 +20,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         // ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => TodoProvider()),
         ChangeNotifierProvider(
           create: (_) => TodosProvider(
             todosRepository: TodosRepositoryImpl(),

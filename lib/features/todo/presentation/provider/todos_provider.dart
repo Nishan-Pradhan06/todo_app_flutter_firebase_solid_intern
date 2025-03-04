@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/features/todo/domain/todos_repository.dart';
+import 'package:todo/features/todo/domain/repository/todos_repository.dart';
 import '../../data/model/todos_model.dart';
 
 class TodosProvider extends ChangeNotifier {
@@ -29,4 +29,14 @@ class TodosProvider extends ChangeNotifier {
       rethrow;
     }
   }
+
+  Stream<List<TodosModel>>? _todosStream;
+
+  // Fetch all tasks from Firebase
+  void fetchTodos() async{
+    _todosStream = _todosRepository.fetchTodos();
+    notifyListeners();
+  }
+
+  Stream<List<TodosModel>>? get todosStream => _todosStream;
 }

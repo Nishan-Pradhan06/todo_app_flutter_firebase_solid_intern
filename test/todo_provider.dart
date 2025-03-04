@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import '../../data/model/get_list_model.dart';
-import '../../data/repository/todo_repository_impl.dart';
-import '../../domain/repository/todo_repository.dart';
+import 'get_list_model.dart';
+import 'todo_repository_impl.dart';
+import 'todo_repository.dart';
 
 class TodoProvider extends ChangeNotifier {
   late TodoRepository _todoRepository;
