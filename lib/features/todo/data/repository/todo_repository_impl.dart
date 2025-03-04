@@ -1,6 +1,6 @@
-import 'package:todoo/features/todo/data/services/todo_services.dart';
-import 'package:todoo/features/todo/data/services/todo_services_impl.dart';
-import 'package:todoo/features/todo/domain/repository/todo_repository.dart';
+import '../../domain/repository/todo_repository.dart';
+import '../services/todo_services.dart';
+import '../services/todo_services_impl.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
   late TodoServices _todoServices;

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:todoo/core/constant/api.dart';
-import 'package:todoo/features/todo/data/services/todo_services.dart';
+import '../../../../core/constant/api.dart';
+import '/features/todo/data/services/todo_services.dart';
 import '../model/get_list_model.dart';
 
 class TodoServicesImpl implements TodoServices {

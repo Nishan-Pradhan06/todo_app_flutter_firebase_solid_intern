@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoo/features/todo/presentation/provider/todo_provider.dart';
+import '../provider/todo_provider.dart';
 import '../widgets/todo_box_widget.dart';
 
 class NotCompletedTask extends StatelessWidget {
