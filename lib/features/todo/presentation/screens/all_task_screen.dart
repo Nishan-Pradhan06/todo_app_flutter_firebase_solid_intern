@@ -53,7 +53,7 @@ class AllTodosScreen extends StatelessWidget {
                 child: TodosWidget(
                   title: todo.title,
                   description: todo.description,
-                  time: '10PM', // Replace with actual time logic if needed
+                  time: todo.time,
                 ),
               );
             },
