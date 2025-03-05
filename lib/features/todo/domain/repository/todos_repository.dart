@@ -1,7 +1,9 @@
 import '../../data/model/todos_model.dart';
 
 abstract class TodosRepository {
-  Future<void> addTask(TodosModel todos);
+  Future<void> addTask(TodosModel todos); //create todos
 
-  Stream<List<TodosModel>> fetchTodos();
+  Stream<List<TodosModel>> fetchTodos(); // fetch todos
+
+  Future<void> updateTodos(TodosModel todos);//update todos
 }

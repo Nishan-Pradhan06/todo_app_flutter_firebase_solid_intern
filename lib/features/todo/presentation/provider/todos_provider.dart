@@ -12,6 +12,7 @@ class TodosProvider extends ChangeNotifier {
   TodosProvider({required TodosRepository todosRepository})
       : _todosRepository = todosRepository;
 
+//create todos
   Future<void> createTask(TodosModel todos) async {
     try {
       await _todosRepository.addTask(todos);
@@ -22,6 +23,26 @@ class TodosProvider extends ChangeNotifier {
     }
   }
 
+//fetch todos
+  Stream<List<TodosModel>>? _todosStream;
+  Stream<List<TodosModel>>? get todosStream => _todosStream;
+
+  // Fetch all tasks from Firebase
+  void fetchTodos() async {
+    _todosStream = _todosRepository.fetchTodos();
+    notifyListeners();
+  }
+
+  //update todos
+  Future<void> updateTodos(TodosModel todos) async {
+    if (todos.id == null) {
+      throw Exception("Task ID is required for updates.");
+    }
+    await _todosRepository.updateTodos(todos);
+    notifyListeners();
+  }
+
+//time picker logics
   void setTime(String time) {
     selectedTime = time; // Set the selected time
     notifyListeners();
@@ -32,17 +53,7 @@ class TodosProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Stream<List<TodosModel>>? _todosStream;
-
-  // Fetch all tasks from Firebase
-  void fetchTodos() async {
-    _todosStream = _todosRepository.fetchTodos();
-    notifyListeners();
-  }
-
-  Stream<List<TodosModel>>? get todosStream => _todosStream;
-
-  // Time picker logic
+//pick time
   Future<void> timePicker(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,

@@ -10,11 +10,13 @@ class TodosServicesImpl implements TodosServices {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+//create todos
   @override
   Future<void> addTask(TodosModel todos) async {
     await _firestore.collection("todos").add(todos.toJson());
   }
 
+//fetch todos
   @override
   Stream<List<TodosModel>> fetchTodos() {
     return _firestore.collection("todos").snapshots().map((snapshot) {
@@ -25,5 +27,11 @@ class TodosServicesImpl implements TodosServices {
         );
       }).toList();
     });
+  }
+
+  //update todos
+  @override
+  Future<void> updateTodos(TodosModel todos) async {
+    await _firestore.collection("todos").doc(todos.id).update(todos.toJson());
   }
 }

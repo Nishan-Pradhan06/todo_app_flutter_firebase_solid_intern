@@ -46,7 +46,9 @@ class AllTodosScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => EditTodosScreen(),
+                      builder: (_) => EditTodosScreen(
+                        todos: todo,
+                      ),
                     ),
                   );
                 },

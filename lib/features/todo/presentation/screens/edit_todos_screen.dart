@@ -6,13 +6,24 @@ import 'package:todo/features/todo/presentation/provider/todos_provider.dart';
 import '../../../../core/widget/custom_appbar.dart';
 import '../widgets/form_widget.dart';
 import '../widgets/label_widget.dart';
+import '../widgets/time_picker_widget.dart';
 
 class EditTodosScreen extends StatelessWidget {
-  const EditTodosScreen({super.key});
+  final TodosModel? todos;
+  const EditTodosScreen({
+    super.key,
+    this.todos,
+  });
 
   @override
   Widget build(BuildContext context) {
     final todosProvider = Provider.of<TodosProvider>(context, listen: false);
+
+    if (todos != null) {
+      todosProvider.titleController.text = todos!.title;
+      todosProvider.descriptionController.text = todos!.description;
+      todosProvider.selectedTime = todos!.time;
+    }
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -50,13 +61,14 @@ class EditTodosScreen extends StatelessWidget {
                 title: 'Update Todos',
                 onPressed: () async {
                   // Create a TaskModel object with the selected time
-                  final task = TodosModel(
+                  final updateTodos = TodosModel(
+                    id: todos?.id,
                     title: todosProvider.titleController.text,
                     description: todosProvider.descriptionController.text,
                     time: todosProvider.selectedTime, // Use the selected time
                   );
                   try {
-                    await todosProvider.createTask(task);
+                    await todosProvider.updateTodos(updateTodos);
                     todosProvider.titleController.clear();
                     todosProvider.descriptionController.clear();
                     todosProvider
@@ -73,37 +85,6 @@ class EditTodosScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class TimePickerWidget extends StatelessWidget {
-  const TimePickerWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final todosProvider = Provider.of<TodosProvider>(context);
-
-    return InkWell(
-      onTap: () => todosProvider.timePicker(context),
-      child: InputDecorator(
-        decoration: InputDecoration(
-          hintText: 'Select Time',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.black54),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.black, width: 2),
-          ),
-        ),
-        child: Text(
-          todosProvider.selectedTime.isEmpty
-              ? 'Select Time'
-              : todosProvider.selectedTime,
         ),
       ),
     );
