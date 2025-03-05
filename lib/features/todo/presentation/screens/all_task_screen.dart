@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/features/todo/data/model/todos_model.dart';
 import 'package:todo/features/todo/presentation/provider/todos_provider.dart';
-import 'package:todo/features/todo/presentation/screens/edit_todos_screen.dart';
 import '../widgets/todos_widget.dart';
+import 'edit_todos_screen.dart';
 
 class AllTodosScreen extends StatelessWidget {
   const AllTodosScreen({super.key});
@@ -69,6 +69,17 @@ class AllTodosScreen extends StatelessWidget {
                     try {
                       await todosProvider
                           .updateTodos(updatedTodo); // Update in Firestore
+
+                      // Show SnackBar with dynamic message
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            value == true
+                                ? 'Marked as Completed'
+                                : 'Marked as Incomplete',
+                          ),
+                        ),
+                      );
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Failed to update task: $e')),

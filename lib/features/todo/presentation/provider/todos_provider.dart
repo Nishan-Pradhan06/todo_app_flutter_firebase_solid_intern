@@ -6,14 +6,23 @@ class TodosProvider extends ChangeNotifier {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   String selectedTime = ''; // Field to store the selected time
-  bool isCompleted = false;
+  bool _isCompleted = false; // Private field for completion status
+
+  // Getter for isCompleted
+  bool get isCompleted => _isCompleted;
+
+  // Method to toggle isCompleted
+  void toggleIsCompleted() {
+    _isCompleted = !_isCompleted; // Toggle the value
+    notifyListeners(); // Notify listeners of the change
+  }
 
   final TodosRepository _todosRepository;
 
   TodosProvider({required TodosRepository todosRepository})
       : _todosRepository = todosRepository;
 
-//create todos
+  // Create todos
   Future<void> createTask(TodosModel todos) async {
     try {
       await _todosRepository.addTask(todos);
@@ -24,7 +33,7 @@ class TodosProvider extends ChangeNotifier {
     }
   }
 
-//fetch todos
+  // Fetch todos
   Stream<List<TodosModel>>? _todosStream;
   Stream<List<TodosModel>>? get todosStream => _todosStream;
 
@@ -34,7 +43,7 @@ class TodosProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //update todos
+  // Update todos
   Future<void> updateTodos(TodosModel todos) async {
     if (todos.id == null) {
       throw Exception("Task ID is required for updates.");
@@ -43,7 +52,7 @@ class TodosProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //delete todos
+  // Delete todos
   Future<void> deleteTodos(String todosId) async {
     if (todosId.isEmpty) {
       throw Exception("Task ID is required for deletion.");
@@ -51,7 +60,7 @@ class TodosProvider extends ChangeNotifier {
     await _todosRepository.deleteTodos(todosId);
   }
 
-//time picker logics
+  // Time picker logic
   void setTime(String time) {
     selectedTime = time; // Set the selected time
     notifyListeners();
@@ -62,7 +71,7 @@ class TodosProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-//pick time
+  // Pick time
   Future<void> timePicker(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,

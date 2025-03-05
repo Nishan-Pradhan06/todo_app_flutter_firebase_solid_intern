@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'Todo List App Huncha Digital',
+          automaticallyImplyLeading: false,
           bottom: const TabBar(
             labelStyle: TextStyle(
               color: Colors.white,
