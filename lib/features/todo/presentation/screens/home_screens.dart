@@ -36,7 +36,6 @@ class HomeScreen extends StatelessWidget {
             AllTodosScreen(),
             NotCompletedTask(),
             CompletedTask(),
-     
           ],
         ),
         floatingActionButton: FloatingActionButton(
