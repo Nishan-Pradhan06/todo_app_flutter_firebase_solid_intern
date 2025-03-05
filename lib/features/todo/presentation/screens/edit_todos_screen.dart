@@ -83,6 +83,36 @@ class EditTodosScreen extends StatelessWidget {
                   }
                 },
               ),
+              SizedBox(
+                height: 10,
+              ),
+              CustomButton(
+                title: 'Delete Todos',
+                color: Colors.red[200],
+                onPressed: () async {
+                  // Create a TaskModel object with the selected time
+                  final updateTodos = TodosModel(
+                    id: todos?.id,
+                    title: todosProvider.titleController.text,
+                    description: todosProvider.descriptionController.text,
+                    time: todosProvider.selectedTime, // Use the selected time
+                  );
+                  try {
+                    await todosProvider.updateTodos(updateTodos);
+                    todosProvider.titleController.clear();
+                    todosProvider.descriptionController.clear();
+                    todosProvider
+                        .resetTime(); // Reset the time after task creation
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Todos Deleted successfully!')),
+                    );
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Failed to Delete Todos: $e')),
+                    );
+                  }
+                },
+              ),
             ],
           ),
         ),

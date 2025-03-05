@@ -43,11 +43,13 @@ class CustomAuthButton extends StatelessWidget {
 class CustomButton extends StatelessWidget {
   final String title;
   final VoidCallback? onPressed;
+  final Color? color;
 
   const CustomButton({
     super.key,
     required this.title,
     required this.onPressed,
+    this.color,
   });
 
   @override
@@ -58,7 +60,7 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.deepPurple[200],
+          backgroundColor: color ?? Colors.deepPurple[200],
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
