@@ -14,7 +14,6 @@ class TodosRepositoryImpl implements TodosRepository {
   TodosRepositoryImpl({TodosServices? todosServices})
       : _todosServices = todosServices ?? TodosServicesImpl();
 
-
 //create todos
   @override
   Future<void> addTask(TodosModel todos) async {
@@ -23,16 +22,19 @@ class TodosRepositoryImpl implements TodosRepository {
 
 //fetch todos
   @override
-  Stream<List<TodosModel>> fetchTodos()  {
+  Stream<List<TodosModel>> fetchTodos() {
     return _todosServices.fetchTodos();
   }
 
-
   //update todos
   @override
-  Future<void> updateTodos(TodosModel todos)async {
-   await _todosServices.updateTodos(todos);
+  Future<void> updateTodos(TodosModel todos) async {
+    await _todosServices.updateTodos(todos);
   }
 
-  
+  //delete todos
+  @override
+  Future<void> deleteTodos(String todosId) async {
+    await _todosServices.deleteTodos(todosId);
+  }
 }

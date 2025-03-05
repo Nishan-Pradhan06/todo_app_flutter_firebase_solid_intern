@@ -6,6 +6,7 @@ import 'package:todo/features/todo/presentation/provider/todos_provider.dart';
 import '../../../../core/widget/custom_appbar.dart';
 import '../widgets/form_widget.dart';
 import '../widgets/label_widget.dart';
+import '../widgets/time_picker_widget.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({super.key});
@@ -73,37 +74,6 @@ class AddTaskScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class TimePickerWidget extends StatelessWidget {
-  const TimePickerWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final todosProvider = Provider.of<TodosProvider>(context);
-
-    return InkWell(
-      onTap: () => todosProvider.timePicker(context),
-      child: InputDecorator(
-        decoration: InputDecoration(
-          hintText: 'Select Time',
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.black54),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: Colors.black, width: 2),
-          ),
-        ),
-        child: Text(
-          todosProvider.selectedTime.isEmpty
-              ? 'Select Time'
-              : todosProvider.selectedTime,
         ),
       ),
     );

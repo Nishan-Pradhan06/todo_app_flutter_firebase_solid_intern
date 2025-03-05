@@ -42,6 +42,14 @@ class TodosProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  //delete todos
+  Future<void> deleteTodos(String todosId) async {
+    if (todosId.isEmpty) {
+      throw Exception("Task ID is required for deletion.");
+    }
+    await _todosRepository.deleteTodos(todosId);
+  }
+
 //time picker logics
   void setTime(String time) {
     selectedTime = time; // Set the selected time

@@ -34,4 +34,10 @@ class TodosServicesImpl implements TodosServices {
   Future<void> updateTodos(TodosModel todos) async {
     await _firestore.collection("todos").doc(todos.id).update(todos.toJson());
   }
+
+  //delete todos
+  @override
+  Future<void> deleteTodos(String todosId) async {
+    await _firestore.collection("todos").doc(todosId).delete();
+  }
 }

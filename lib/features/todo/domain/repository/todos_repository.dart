@@ -5,5 +5,7 @@ abstract class TodosRepository {
 
   Stream<List<TodosModel>> fetchTodos(); // fetch todos
 
-  Future<void> updateTodos(TodosModel todos);//update todos
+  Future<void> updateTodos(TodosModel todos); //update todos
+
+  Future<void> deleteTodos(String todosId); //delete todos
 }

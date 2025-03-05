@@ -91,20 +91,20 @@ class EditTodosScreen extends StatelessWidget {
                 color: Colors.red[200],
                 onPressed: () async {
                   // Create a TaskModel object with the selected time
-                  final updateTodos = TodosModel(
-                    id: todos?.id,
-                    title: todosProvider.titleController.text,
-                    description: todosProvider.descriptionController.text,
-                    time: todosProvider.selectedTime, // Use the selected time
-                  );
-                  try {
-                    await todosProvider.updateTodos(updateTodos);
-                    todosProvider.titleController.clear();
-                    todosProvider.descriptionController.clear();
-                    todosProvider
-                        .resetTime(); // Reset the time after task creation
+                  if (todos?.id == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Todos Deleted successfully!')),
+                      const SnackBar(
+                          content:
+                              Text('Failed to Delete: Task ID is missing!')),
+                    );
+                    return;
+                  }
+                  try {
+                    await todosProvider.deleteTodos(todos!.id!);
+                    Navigator.pop(context); // Go back to the previous screen
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content: Text('Todos Deleted successfully!')),
                     );
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
