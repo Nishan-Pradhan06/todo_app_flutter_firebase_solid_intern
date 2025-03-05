@@ -5,17 +5,9 @@ import '../../data/model/todos_model.dart';
 class TodosProvider extends ChangeNotifier {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
+  String selectedTime = ''; // Field to store the selected time
 
   final TodosRepository _todosRepository;
-
-  // TodosProvider(TodosModel todos) {
-  //   _todosRepository = TodosRepositoryImpl();
-  //   createTask(todos);
-  // }
-
-  // Future<void> createTask(TodosModel todos) async {
-  //   await _todosRepository.addTask(todos);
-  // }
 
   TodosProvider({required TodosRepository todosRepository})
       : _todosRepository = todosRepository;
@@ -30,13 +22,44 @@ class TodosProvider extends ChangeNotifier {
     }
   }
 
+  void setTime(String time) {
+    selectedTime = time; // Set the selected time
+    notifyListeners();
+  }
+
+  void resetTime() {
+    selectedTime = ''; // Reset the time
+    notifyListeners();
+  }
+
   Stream<List<TodosModel>>? _todosStream;
 
   // Fetch all tasks from Firebase
-  void fetchTodos() async{
+  void fetchTodos() async {
     _todosStream = _todosRepository.fetchTodos();
     notifyListeners();
   }
 
   Stream<List<TodosModel>>? get todosStream => _todosStream;
+
+  // Time picker logic
+  Future<void> timePicker(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    if (picked != null) {
+      final formattedTime = _formatTime(picked);
+      setTime(formattedTime); // Update the selected time
+    }
+  }
+
+  // Helper method to format time in 12-hour format
+  String _formatTime(TimeOfDay time) {
+    final hour = time.hourOfPeriod == 0 ? 12 : time.hourOfPeriod;
+    final minute = time.minute.toString().padLeft(2, '0');
+    final period = time.period == DayPeriod.am ? 'AM' : 'PM';
+    return '$hour:$minute $period';
+  }
 }
