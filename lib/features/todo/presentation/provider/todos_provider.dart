@@ -6,6 +6,7 @@ class TodosProvider extends ChangeNotifier {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   String selectedTime = ''; // Field to store the selected time
+  bool isCompleted = false;
 
   final TodosRepository _todosRepository;
 

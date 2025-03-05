@@ -56,6 +56,25 @@ class AllTodosScreen extends StatelessWidget {
                   title: todo.title,
                   description: todo.description,
                   time: todo.time,
+                  isCompleted: todo.isCompleted,
+                  onToggle: (bool? value) async {
+                    // Toggle the completion status in Firestore
+                    final updatedTodo = TodosModel(
+                      id: todo.id,
+                      title: todo.title,
+                      description: todo.description,
+                      time: todo.time,
+                      isCompleted: value ?? false, // Update the status
+                    );
+                    try {
+                      await todosProvider
+                          .updateTodos(updatedTodo); // Update in Firestore
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Failed to update task: $e')),
+                      );
+                    }
+                  },
                 ),
               );
             },

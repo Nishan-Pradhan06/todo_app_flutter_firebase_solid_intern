@@ -55,6 +55,7 @@ class AddTaskScreen extends StatelessWidget {
                     title: todosProvider.titleController.text,
                     description: todosProvider.descriptionController.text,
                     time: todosProvider.selectedTime, // Use the selected time
+                    isCompleted: todosProvider.isCompleted,
                   );
                   try {
                     await todosProvider.createTask(task);
