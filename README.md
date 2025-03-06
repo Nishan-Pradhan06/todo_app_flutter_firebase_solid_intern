@@ -1,16 +1,48 @@
-# todo
+# Todo App Project
 
-A new Flutter project.
 
-## Getting Started
+This is a **Todo App** built using **Flutter** for the frontend, **Firebase** as the backend, and adhering to the **SOLID principles** of software design. The app allows users to manage their tasks efficiently, with features like adding, updating, deleting, marking tasks as complete, and receiving **push notifications** for task reminders. Firebase provides real-time data synchronization, authentication, and cloud messaging for notifications, ensuring a seamless user experience.
 
-This project is a starting point for a Flutter application.
+## Table of Contents
 
-A few resources to get you started if this is your first Flutter project:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+
+- **Add Tasks**: Users can add new tasks with a title, description, and due date.
+- **Update Tasks**: Modify existing tasks easily.
+- **Delete Tasks**: Remove tasks that are no longer needed.
+- **Mark as Complete**: Mark tasks as completed to track progress.
+- **Real-Time Sync**: Firebase ensures real-time updates across devices.
+- **Authentication**: Secure user login and registration using Firebase Auth.
+- **Push Notifications**: Receive reminders for upcoming or overdue tasks via Firebase Cloud Messaging (FCM).
+
+---
+
+## Technologies Used
+
+- **Frontend**: Flutter (Dart programming language)
+- **Backend**: Firebase (Firestore for database, Authentication for user management, Cloud Messaging for notifications)
+- **Design Principles**: SOLID principles for clean and maintainable code
+- **State Management**: Provider, Riverpod, or Bloc (depending on your implementation)
+- **Notifications**: Firebase Cloud Messaging (FCM) for push notifications
+- **Hosting**: Firebase Hosting (optional)
+
+---
+
+## Screenshots
+
+Below are some screenshots of the Todo app in action:
+
+| Title               | Image                                                                 | Description                                     |
+|---------------------|-----------------------------------------------------------------------|-------------------------------------------------|
+| Login Screen        | ![Login Screen](./screenshots/login_screen.jpg)                       | User authentication screen                      |
+| Todos List          | ![Todos List](./screenshots/all_todos_screen.jpg)                     | View all tasks in a clean and organized list    |
+| Add Task            | ![Add Task](./screenshots/create_todos.jpg)                           | Add a new task with a title and description     |
+| Completed Tasks     | ![Completed Tasks](./screenshots/completed_todos.jpg)                 | View tasks marked as completed                  |
+
+---
