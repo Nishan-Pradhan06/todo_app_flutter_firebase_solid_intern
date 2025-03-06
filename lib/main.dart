@@ -5,7 +5,6 @@ import 'package:todo/core/constant/firebase_api.dart';
 import 'features/auth/presentation/screens/login_screen.dart';
 import 'features/todo/data/repository/todos_repository_impl.dart';
 import 'features/todo/presentation/provider/todos_provider.dart';
-import 'features/todo/presentation/screens/home_screens.dart';
 import 'features/todo/presentation/screens/not_compelted_task_screen.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
