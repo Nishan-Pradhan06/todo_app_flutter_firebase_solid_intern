@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             AllTodosScreen(),
-            NotCompletedTask(),
+            InCompletedTodos(),
             CompletedTask(),
           ],
         ),

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "382677136972",
+    "firebase_url": "https://todos-ea867-default-rtdb.firebaseio.com",
     "project_id": "todos-ea867",
     "storage_bucket": "todos-ea867.firebasestorage.app"
   },
