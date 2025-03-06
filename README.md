@@ -18,7 +18,7 @@ This is a **Todo App** built using **Flutter** for the frontend, **Firebase** as
 - **Delete Tasks**: Remove tasks that are no longer needed.
 - **Mark as Complete**: Mark tasks as completed to track progress.
 - **Real-Time Sync**: Firebase ensures real-time updates across devices.
-- **Authentication**: Secure user login and registration using Firebase Auth.
+<!-- - **Authentication**: Secure user login and registration using Firebase Auth. -->
 - **Push Notifications**: Receive reminders for upcoming or overdue tasks via Firebase Cloud Messaging (FCM).
 
 ---
@@ -28,9 +28,8 @@ This is a **Todo App** built using **Flutter** for the frontend, **Firebase** as
 - **Frontend**: Flutter (Dart programming language)
 - **Backend**: Firebase (Firestore for database, Authentication for user management, Cloud Messaging for notifications)
 - **Design Principles**: SOLID principles for clean and maintainable code
-- **State Management**: Provider, Riverpod, or Bloc (depending on your implementation)
+- **State Management**: Provider for State Management
 - **Notifications**: Firebase Cloud Messaging (FCM) for push notifications
-- **Hosting**: Firebase Hosting (optional)
 
 ---
 
